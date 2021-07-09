@@ -25,14 +25,29 @@ names(xmax) <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri' , 'Sat' , 'Sun')
 temperature <- data.frame(xmin,xmax)
 
 # h)
-temperature <- within(temperature,{xminFahrenheit <- xmin*9/5 + 32})
+# Make the code more readable.
+temperature <- within(temperature, {
+	xminFahrenheit <- xmin*9/5 + 32
+})
 
 #i)
+
+# Easier:
+temperature <- within(temperature, {
+	xmaxFahrenheit <- xmax * 9 / 5 + 32
+})
+
+ftemp <- temperature[, c('xmaxFahrenheit', 'xminFahrenheit')]
+
 ftemp <- data.frame(
   Max_temp_Fahr = xmax*9/5 + 32 , 
   Min_temp_Fahr = xmin*9/5 + 32)
 
+# Better
 # j)
+
+ftemp[1:6, ]
+ftemp[-(6:7), ]
 
 FivedaytempFahrenheit  <- data.frame(
   Max_temp_Fahr = xmax[seq(1:5)]*9/5+32,
